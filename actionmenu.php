@@ -14,7 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-require_once __DIR__ . "/../../config.php";
+/**
+ * Request handler for displaying action menu examples.
+ *
+ * @package   local_examples
+ * @copyright 2022 onwards Dez Glidden
+ * @author    Dez Glideen <dezglidden@gmail.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+require_once(__DIR__ . "/../../config.php");
 
 require_login();
 
