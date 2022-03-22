@@ -24,6 +24,7 @@
  */
 
 $string['actionmenuexamples'] = 'Action menu examples';
+$string['custommenuexamples'] = 'Custom menu examples';
 $string['hownottodoit'] = 'How not to do it';
 $string['nothingtosee'] = 'Nothing to see';
 $string['pluginname'] = 'Local examples';
@@ -33,3 +34,4 @@ $string['showstheuseofadefaultsecondary'] = 'Shows the use of a default secondar
 $string['showstheuseofrawhtml'] = 'Shows the use of rawhtml in both a primary and secondary action menu. Taken from the example context in action_menu.mustache.';
 $string['some2ndactionlink'] = 'Some 2nd action link';
 $string['workingwiththeactionmenu'] = 'Working with the action menu';
+$string['workingwiththecustommenu'] = 'Working with the custom menu';
