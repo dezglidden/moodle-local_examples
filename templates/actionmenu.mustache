@@ -19,8 +19,62 @@
 }}
 <section>
 
-    {{^actionmenu}}
+    {{^actionmenus}}
         <h3>{{#str}}nothingtosee, local_examples{{/str}}</h3>
-    {{/actionmenu}}
+    {{/actionmenus}}
+
+    {{#actionmenus}}
+        <h3>{{#str}}workingwiththeactionmenu, local_examples{{/str}}</h3>
+        {{#single}}
+
+            {{#primary}}
+                {{#default}}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p>{{#str}}showstheuseofadefaultprimary, local_examples{{/str}}</p>
+                        </div>
+                        {{> core/action_menu}}
+                    </div>
+                </div>
+                {{/default}}
+
+                {{#haspixicon}}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p>{{#str}}showstheuseofaprimarymenu, local_examples{{/str}}</p>
+                        </div>
+                        {{> core/action_menu}}
+                    </div>
+                </div>
+                {{/haspixicon}}
+            {{/primary}}
+
+            {{#secondary}}
+                {{#default}}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <p>{{#str}}showstheuseofadefaultsecondary, local_examples{{/str}}</p>
+                        </div>
+                        {{> core/action_menu}}
+                    </div>
+                </div>
+                {{/default}}
+            {{/secondary}}
+        {{/single}}
+
+        {{#sample}}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="card-title">
+                    <p>{{#str}}showstheuseofrawhtml, local_examples{{/str}}</p>
+                </div>
+                {{> core/action_menu}}
+            </div>
+        </div>
+        {{/sample}}
+    {{/actionmenus}}
 
 </section>
