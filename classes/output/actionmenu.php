@@ -16,6 +16,10 @@
 
 namespace local_examples\output;
 
+use \action_menu;
+use \action_menu_link;
+use \coding_exception;
+use \moodle_url;
 use \renderable;
 use \renderer_base;
 use \stdClass;
@@ -40,7 +44,80 @@ class actionmenu implements templatable, renderable {
      */
     public function export_for_template(renderer_base $output): stdClass {
         $data = new stdClass();
+        $data->actionmenus['single']['primary']['default'] = $this->get_single_primary_default($output);
+        $data->actionmenus['single']['secondary']['default'] = $this->get_secondary_menu($output);
+        $data->actionmenus['sample'] = $this->get_sample_context();
         return $data;
+    }
+
+    /**
+     * Get the default primary action menu.
+     *
+     * @param renderer_base $output
+     * @return stdClass
+     * @throws coding_exception if a string is not found using get_string(). No issue here.
+     */
+    protected function get_single_primary_default(renderer_base $output): stdClass {
+        $url = new moodle_url('/#');
+        $icon = null;
+        $text = get_string('hownottodoit', 'local_examples');
+        $primary = true;
+        $attributes = [];
+        $link = new action_menu_link($url, $icon, $text, $primary, $attributes);
+        return (new action_menu([$link, $this->get_additional_link()]))->export_for_template($output);
+    }
+
+    /**
+     * Get an action menu with 2 items, using the secondary section of the action_menu template.
+     *
+     * @param renderer_base $output
+     * @return stdClass
+     * @throws coding_exception if a string is not found using get_string(). No issue here.
+     */
+    protected function get_secondary_menu(renderer_base $output): stdClass {
+        $url = new moodle_url('/#');
+        $icon = new \pix_icon('i/info', 'info');
+        $text = get_string('some2ndactionlink', 'local_examples');
+        $primary = false;
+        $attributes = [];
+        $link = new action_menu_link($url, $icon, $text, $primary, $attributes);
+        return (new action_menu([$link, $this->get_additional_link()]))->export_for_template($output);
+    }
+
+    /**
+     * Get a single link for the purpose of reuse.
+     *
+     * @return action_menu_link
+     * @throws coding_exception if a string is not found using get_string(). No issue here.
+     */
+    private function get_additional_link(): action_menu_link {
+        $url = new moodle_url('/#');
+        $icon = new \pix_icon('i/info', 'info');
+        $text = get_string('some2ndactionlink', 'local_examples');
+        $primary = false;
+        $attributes = [];
+        return new action_menu_link($url, $icon, $text, $primary, $attributes);
+    }
+
+    /**
+     * Sample context data taken from the action_menu.mustache file.
+     *
+     * @return array
+     */
+    protected function get_sample_context(): array {
+        return [
+            "classes" => "super-css",
+            "attributes" => [
+                "name" => 'data-isawesome',
+                "value" => 'true'
+            ],
+            "primary" => [
+                "items" => ["rawhtml" => "<p>Item in primary menu</p>"]
+            ],
+            "secondary" => [
+                "items" => ["rawhtml" => "<p>Item in secondary menu</p>"]
+            ]
+        ];
     }
 
 }

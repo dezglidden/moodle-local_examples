@@ -24,6 +24,12 @@
  */
 
 $string['actionmenuexamples'] = 'Action menu examples';
+$string['hownottodoit'] = 'How not to do it';
 $string['nothingtosee'] = 'Nothing to see';
 $string['pluginname'] = 'Local examples';
+$string['showstheuseofaprimarymenu'] = 'Shows the use of a primary menu with a specified pix_icon, without any child items.';
+$string['showstheuseofadefaultprimary'] = 'Shows the use of a default primary action menu, with a single child item.';
+$string['showstheuseofadefaultsecondary'] = 'Shows the use of a default secondary action menu with a single action link.';
+$string['showstheuseofrawhtml'] = 'Shows the use of rawhtml in both a primary and secondary action menu. Taken from the example context in action_menu.mustache.';
+$string['some2ndactionlink'] = 'Some 2nd action link';
 $string['workingwiththeactionmenu'] = 'Working with the action menu';
