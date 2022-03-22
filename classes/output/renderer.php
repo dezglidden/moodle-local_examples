@@ -42,4 +42,16 @@ class renderer extends plugin_renderer_base {
         return $this->render_from_template('local_examples/actionmenu', $data);
     }
 
+    /**
+     * Render the custommenu class using the corresponding template.
+     *
+     * @param custommenu $component
+     * @return string
+     * @throws moodle_exception if the template does not exist. We're good here.
+     */
+    protected function render_custommenu(custommenu $component): string {
+        $data = $component->export_for_template($this);
+        return $this->render_from_template('local_examples/custommenu', $data);
+    }
+
 }

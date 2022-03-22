@@ -15,17 +15,28 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file contains the string components for the local examples plugin.
+ * Request handler for displaying custom menu examples.
  *
  * @package   local_examples
- * @copyright 2022 Dez Glidden
- * @author    Dez Glidden <dezglidden@gmail.com>
+ * @copyright 2022 onwards Dez Glidden
+ * @author    Dez Glideen <dezglidden@gmail.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['actionmenuexamples'] = 'Action menu examples';
-$string['custommenuexamples'] = 'Custom menu examples';
-$string['nothingtosee'] = 'Nothing to see';
-$string['pluginname'] = 'Local examples';
-$string['workingwiththeactionmenu'] = 'Working with the action menu';
-$string['workingwiththecustommenu'] = 'Working with the custom menu';
+require_once(__DIR__ . '/../../config.php');
+
+require_login();
+
+$PAGE->set_context(context_system::instance());
+$PAGE->set_url(new moodle_url("/local/examples/custommenu.php"), []);
+$PAGE->set_pagelayout('standard');
+$PAGE->set_title($PAGE->course->fullname);
+$PAGE->set_heading(get_string('custommenuexamples', 'local_examples'));
+
+$custommenu = new \local_examples\output\custommenu();
+$output = $PAGE->get_renderer('local_examples');
+
+echo $output->header();
+echo $output->heading(get_string('workingwiththecustommenu', 'local_examples'), 3);
+echo $output->render($custommenu);
+echo $output->footer();
