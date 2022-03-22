@@ -14,16 +14,32 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace local_examples\output;
+
+use \moodle_exception;
+use \plugin_renderer_base;
+
 /**
- * This file contains the string components for the local examples plugin.
+ * Class renderer
  *
  * @package   local_examples
- * @copyright 2022 Dez Glidden
- * @author    Dez Glidden <dezglidden@gmail.com>
+ * @category  output
+ * @copyright 2022 onwards Dez Glidden
+ * @author    Dez Glideen <dezglidden@gmail.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+class renderer extends plugin_renderer_base {
 
-$string['actionmenuexamples'] = 'Action menu examples';
-$string['nothingtosee'] = 'Nothing to see';
-$string['pluginname'] = 'Local examples';
-$string['workingwiththeactionmenu'] = 'Working with the action menu';
+    /**
+     * Render the actionmenu using the corresponding template.
+     *
+     * @param \local_examples\output\actionmenu $component
+     * @return string
+     * @throws moodle_exception if the template does not exist. We're good here.
+     */
+    protected function render_actionmenu(actionmenu $component): string {
+        $data = $component->export_for_template($this);
+        return $this->render_from_template('local_examples/actionmenu', $data);
+    }
+
+}
