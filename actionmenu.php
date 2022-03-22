@@ -37,6 +37,5 @@ $component = new \local_examples\output\actionmenu();
 $output = $PAGE->get_renderer('local_examples');
 
 echo $output->header();
-echo $output->heading(get_string('workingwiththeactionmenu', 'local_examples'), 3);
 echo $output->render($component);
 echo $output->footer();
