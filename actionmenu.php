@@ -14,16 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * This file contains the string components for the local examples plugin.
- *
- * @package   local_examples
- * @copyright 2022 Dez Glidden
- * @author    Dez Glidden <dezglidden@gmail.com>
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+require_once __DIR__ . "/../../config.php";
 
-$string['actionmenuexamples'] = 'Action menu examples';
-$string['nothingtosee'] = 'Nothing to see';
-$string['pluginname'] = 'Local examples';
-$string['workingwiththeactionmenu'] = 'Working with the action menu';
+require_login();
+
+$PAGE->set_context(context_system::instance());
+$PAGE->set_url(new moodle_url('/local/examples/actionmenu.php'));
+$PAGE->set_pagelayout('standard');
+$PAGE->set_title($PAGE->course->fullname);
+$PAGE->set_heading(get_string('actionmenuexamples', 'local_examples'));
+
+$component = new \local_examples\output\actionmenu();
+$output = $PAGE->get_renderer('local_examples');
+
+echo $output->header();
+echo $output->heading(get_string('workingwiththeactionmenu', 'local_examples'), 3);
+echo $output->render($component);
+echo $output->footer();

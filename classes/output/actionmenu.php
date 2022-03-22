@@ -14,16 +14,33 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+namespace local_examples\output;
+
+use \renderable;
+use \renderer_base;
+use \stdClass;
+use \templatable;
+
 /**
- * This file contains the string components for the local examples plugin.
+ * Class actionmenu
  *
  * @package   local_examples
- * @copyright 2022 Dez Glidden
- * @author    Dez Glidden <dezglidden@gmail.com>
+ * @category  output
+ * @copyright 2022 onwards Dez Glidden
+ * @author    Dez Glideen <dezglidden@gmail.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+class actionmenu implements templatable, renderable {
 
-$string['actionmenuexamples'] = 'Action menu examples';
-$string['nothingtosee'] = 'Nothing to see';
-$string['pluginname'] = 'Local examples';
-$string['workingwiththeactionmenu'] = 'Working with the action menu';
+    /**
+     * Prepare the data for being passed to the renderer.
+     *
+     * @param renderer_base $output
+     * @return stdClass
+     */
+    public function export_for_template(renderer_base $output): stdClass {
+        $data = new stdClass();
+        return $data;
+    }
+
+}
