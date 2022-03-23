@@ -25,6 +25,7 @@
 
 $string['actionmenuexamples'] = 'Action menu examples';
 $string['custommenuexamples'] = 'Custom menu examples';
+$string['dropdownexamples'] = 'Dropdown examples';
 $string['hownottodoit'] = 'How not to do it';
 $string['nothingtosee'] = 'Nothing to see';
 $string['pluginname'] = 'Local examples';

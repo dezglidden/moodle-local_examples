@@ -54,4 +54,16 @@ class renderer extends plugin_renderer_base {
         return $this->render_from_template('local_examples/custommenu', $data);
     }
 
+    /**
+     * Render the dropdown class using the corresponding template.
+     *
+     * @param dropdown $component
+     * @return string
+     * @throws moodle_exception if the template does not exist. We're good here.
+     */
+    protected function render_dropdown(dropdown $component): string {
+        $data = $component->export_for_template($this);
+        return $this->render_from_template('local_examples/dropdown', $data);
+    }
+
 }
