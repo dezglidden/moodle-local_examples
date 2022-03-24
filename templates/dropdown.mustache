@@ -19,9 +19,17 @@
 
     Template for displaying a dropdown component.
 }}
+<h3 class="pb-3">{{heading}}</h3>
+
 {{#dropdown}}
 <div class="dropdown {{#classes}}{{classes}}{{/classes}}">
     {{> local_examples/dropdown_trigger}}
     {{> local_examples/dropdown_menu}}
 </div>
 {{/dropdown}}
+
+<p class="pt-3">{{leadparagraph}}</p>
+
+{{#contents}}
+<p class="pt-3">{{content}}</p>
+{{/contents}}
