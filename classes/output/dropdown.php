@@ -16,6 +16,7 @@
 
 namespace local_examples\output;
 
+use \local_examples\local\faker\dropdown as generator;
 use \renderable;
 use \renderer_base;
 use \stdClass;
@@ -40,7 +41,11 @@ class dropdown implements templatable, renderable {
      */
     public function export_for_template(renderer_base $output): stdClass {
         $data = new stdClass();
+        $generator = new generator();
         $data->dropdown = $this->sample();
+        $data->heading = $generator->generate_heading();
+        $data->leadparagraph = $generator->generate_lead_paragraph();
+        $data->contents['content'] = $generator->generate_page_content();
         return $data;
     }
 
@@ -78,4 +83,5 @@ class dropdown implements templatable, renderable {
             ]
         ];
     }
+
 }
