@@ -1,0 +1,5 @@
+{
+    "require": {
+        "fakerphp/faker": "v1.18.0"
+    }
+}
